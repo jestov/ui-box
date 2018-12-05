@@ -15,20 +15,25 @@
                     <div class="row pt-5">
                         <div class="col-12">
 
-
-                                    <form @submit.prevent="sendColour">
-                                        <div class="form-group">
-                                            <input type="text" v-model="colour.title" placeholder="Name" class="form-control">
-                                            <input v-model="colour.description" placeholder="Insert a color" class="form-control">
-                                            <template v-if="edit === false">
-                                                <button class="btn btn-primary btn-block">Send</button>
-                                            </template>
-                                            <template v-else>
-                                                <button class="btn btn-primary btn-block">Update</button>
-                                            </template>
-                                        </div>
-                                    </form>
-
+                            <form @submit.prevent="sendColour">
+                                <div class="form-group">
+                                    <input type="text" v-model="colour.title" placeholder="Name" class="form-control">
+                                    <input v-model="colour.description" placeholder="Insert a color" class="form-control">
+                                    <button class="btn btn-primary btn-block">Send</button>
+                                </div>
+                            </form>
+                            <template v-if="edit === true">
+                                <form @submit.prevent="sendColour" class="form-edit">
+                                <div class="form-group">
+                                    <input type="text" v-model="colour.title" placeholder="Name" class="form-control">
+                                    <input v-model="colour.description" placeholder="Insert a color" class="form-control">
+                                    <button class="btn btn-primary btn-block">Update</button>
+                                </div>
+                                <div class="close" @click="closeEdit()">
+                                    <i class="icon ion-md-close"></i>
+                                </div>
+                                </form>
+                            </template>
 
                         </div>
                     </div>
@@ -147,6 +152,9 @@
                         this.colourToEdit = data._id;
                         this.edit = true;
                     });
+            },
+            closeEdit(){
+                this.edit = false;
             }
         }
     }
