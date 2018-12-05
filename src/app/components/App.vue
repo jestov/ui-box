@@ -16,10 +16,10 @@
                         <div class="col-12">
 
 
-                                    <form @submit.prevent="sendTask">
+                                    <form @submit.prevent="sendColour">
                                         <div class="form-group">
-                                            <input type="text" v-model="task.title" placeholder="Name" class="form-control">
-                                            <input v-model="task.description" placeholder="Insert a color" class="form-control">
+                                            <input type="text" v-model="colour.title" placeholder="Name" class="form-control">
+                                            <input v-model="colour.description" placeholder="Insert a color" class="form-control">
                                             <template v-if="edit === false">
                                                 <button class="btn btn-primary btn-block">Send</button>
                                             </template>
@@ -36,18 +36,18 @@
                         <div class="col-12">
                             <h1>My Resources</h1>
                         </div>
-                        <div class="col-3" v-for="task of tasks">
+                        <div class="col-3" v-for="colour of colours">
                             <div class="resource">
-                                <i class="icon ion-md-copy copy" v-bind:data-clipboard-text="task.description"></i>
-                                <div class="bg" v-bind:style="{background:task.description}">
+                                <i class="icon ion-md-copy copy" v-bind:data-clipboard-text="colour.description"></i>
+                                <div class="bg" v-bind:style="{background:colour.description}">
                                 </div>
                                 <div class="info">
-                                    <b>{{task.title}}</b><br>
-                                    {{task.description}}
+                                    <b>{{colour.title}}</b><br>
+                                    {{colour.description}}
                                 </div>
                                 <div class="actions">
-                                    <button @click="editTask(task._id)" class="btn btn-primary btn-sm">Edit</button>
-                                    <button @click="deleteTask(task._id)" class="btn btn-danger btn-sm">Delete</button>
+                                    <button @click="editColour(colour._id)" class="btn btn-primary btn-sm">Edit</button>
+                                    <button @click="deleteColour(colour._id)" class="btn btn-danger btn-sm">Delete</button>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
 
 
 <script>
-    class Task {
+    class Colour {
         constructor(title, description){
             this.title = title;
             this.description = description;
@@ -75,21 +75,21 @@
     export default {
         data() {
             return {
-                task: new Task(),
-                tasks: [],
+                colour: new Colour(),
+                colours: [],
                 edit: false,
-                taskToEdit: ''
+                colourToEdit: ''
             }
         },
         created(){
-            this.getTasks();
+            this.getColours();
         },
         methods: {
-            sendTask(){
+            sendColour(){
                 if (this.edit === false) {
-                    fetch('/api/tasks', {
+                    fetch('/api/colours', {
                         method: 'POST',
-                        body: JSON.stringify(this.task),
+                        body: JSON.stringify(this.colour),
                         headers: {
                             'Accept': 'application/json',
                             'Content-type': 'application/json'
@@ -97,13 +97,13 @@
                     })
                     .then(res => res.json())
                     .then(data => {
-                        this.getTasks();
+                        this.getColours();
                     })
                 }
                 else{
-                    fetch('/api/tasks/' + this.taskToEdit, {
+                    fetch('/api/colours/' + this.colourToEdit, {
                         method: 'PUT',
-                        body: JSON.stringify(this.task),
+                        body: JSON.stringify(this.colour),
                         headers: {
                             'Accept': 'application/json',
                             'Content-type': 'application/json'
@@ -111,23 +111,23 @@
                     })
                     .then(res => res.json())
                     .then(data => {
-                        this.getTasks();
+                        this.getColours();
                         this.edit = false;
                     })
                 }
 
-                this.task = new Task();
+                this.colour = new Colour();
             },
-            getTasks(){
-                fetch('/api/tasks')
+            getColours(){
+                fetch('/api/colours')
                     .then(res => res.json())
                     .then(data => {
-                        this.tasks = data;
-                        console.log(this.tasks)
+                        this.colours = data;
+                        console.log(this.colours)
                     });
             },
-            deleteTask(id){
-                fetch('/api/tasks/' + id ,{
+            deleteColour(id){
+                fetch('/api/colours/' + id ,{
                     method: 'DELETE',
                     headers: {
                         'Accept': 'application/json',
@@ -136,15 +136,15 @@
                 })
                 .then(res => res.json())
                 .then(data => {
-                    this.getTasks();
+                    this.getColours();
                 });
             },
-            editTask(id){
-                fetch('/api/tasks/' + id)
+            editColour(id){
+                fetch('/api/colours/' + id)
                     .then(res => res.json())
                     .then(data => {
-                        this.task = new Task(data.title, data.description);
-                        this.taskToEdit = data._id;
+                        this.colour = new Colour(data.title, data.description);
+                        this.colourToEdit = data._id;
                         this.edit = true;
                     });
             }
