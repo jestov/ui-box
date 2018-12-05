@@ -56,10 +56,9 @@
                                 </div>
                             </div>
                         </div>
-                        </div>
-                        <div class="message">
-                            Copied
-                        </div>
+                    </div>
+                    <div class="message">
+                        Copied
                     </div>
                 </div>
             </div>
