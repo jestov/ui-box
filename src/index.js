@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 
 const app = express();
-mongoose.connect('mongodb://localhost/ui-box-db', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/mevn-db', { useNewUrlParser: true })
         .then(db => console.log('DB is connected'))
         .catch(err => console.error(err));
 
@@ -15,7 +15,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 // Routes
-// app.use('/api/tasks', require('./routes/tasks'));
+app.use('/api/tasks', require('./routes/tasks'));
 
 // Static files
 app.use(express.static(__dirname + '/public'));
