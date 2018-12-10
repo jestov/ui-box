@@ -53,7 +53,7 @@
                                 <h3>Add new snippet</h3>
                                 <div class="form-group">
                                     <input type="text" v-model="snippet.title" placeholder="Name" class="form-control">
-                                    <input v-model="snippet.description" placeholder="Insert a color" class="form-control">
+                                    <input v-model="snippet.description" placeholder="Insert a Snippet" class="form-control">
                                     <button class="btn btn-primary btn-block">Send</button>
                                 </div>
                                 <div class="close" @click="closeActions()">
@@ -66,7 +66,7 @@
                                 <h3>Edit snippet</h3>
                                 <div class="form-group">
                                     <input type="text" v-model="snippet.title" placeholder="Name" class="form-control">
-                                    <input v-model="snippet.description" placeholder="Insert a color" class="form-control">
+                                    <input v-model="snippet.description" placeholder="Insert a Snippet" class="form-control">
                                     <button class="btn btn-primary btn-block">Update</button>
                                 </div>
                                 <div class="close" @click="closeActions()">
@@ -75,7 +75,7 @@
                             </form>
                         </template>
                     </div>
-                    <div class="row">
+                    <div class="row pb-5">
                         <div class="col-12">
                             <h1>My Colours</h1>
                         </div>
