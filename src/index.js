@@ -16,6 +16,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/colours', require('./routes/colours'));
+app.use('/api/snippets', require('./routes/snippets'));
 
 // Static files
 app.use(express.static(__dirname + '/public'));
