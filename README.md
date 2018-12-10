@@ -1,6 +1,6 @@
 # ui-box
 
-> My personal website
+> MEVN Stack
 
 ## Build Setup
 
@@ -15,7 +15,7 @@ npm install
 
 # run for mode development mode
 npm run webpack
-
+or
 # build for production with minification of files
 npm run build
 
