@@ -6,10 +6,11 @@ body,html{
     background: #f9f9f9;
     height: 100%;
     min-height: 100vh;
-    position: relative;
+    position: sticky;
     overflow-y: auto;
     border-right: 1px solid #eee;
     padding: 0 30px;
+    top: 0;
 }
 .sidebar img{
     margin: 30px auto;
@@ -46,14 +47,30 @@ body,html{
 .navbar-brand{
     margin: 0;
 }
+a{
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0px;
+    cursor: pointer;   
+}
 h1{
     margin: 30px 0;
     font-size: 20px;
     font-weight: 600;
     letter-spacing: -1px;
 }
+h3{
+    font-size: 18px;
+    letter-spacing: -1px;
+    font-weight: 600;
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+    line-height: 2;
+    width: 20%;
+}
 .form-control{
-    width: calc(40% - 5px);
+    width: 25%;
     display: inline-block;
     vertical-align: middle;
     resize: none;
@@ -85,7 +102,7 @@ form .btn:hover,form .btn:focus{
 .close{
     position: absolute;
     right: 30px;
-    top: 22px;
+    top: 26px;
     opacity: 1;
 }
 .resource{
@@ -96,9 +113,27 @@ form .btn:hover,form .btn:focus{
     border: 1px solid #eee !important;
     margin-bottom: 15px;
 }
+.resource.snippet .info{
+    border-top:none;
+    padding-top: 40px;
+}
+.resource.snippet .copy{
+    border: 1px solid #eee;
+}
+.resource.snippet .description{
+    font-family: monospace;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #eee;
+    font-size: 11.5px;
+    line-height: 1;
+    color: #666;
+    margin-top: 5px;
+    background: #f9f9f9;
+}
 .resource .bg{
     position: relative;
-    padding: 50px;
+    padding: 45px 50px;
     border-radius: 10px 10px 0 0;
 }
 .resource .info,.resource .actions{
@@ -142,13 +177,15 @@ form .btn:hover,form .btn:focus{
     text-transform: uppercase;
     font-size: 12.5px;
 }
-.form-edit{
+
+.form-edit,.form-add{
     position: fixed;
     width: 100%;
-    height: 70px;
+    height: 80px;
     background: #fff;
     border-top: 1px solid #eee;
     bottom: 0;
     left: 0;
-    padding: 15px 100px;
+    padding: 20px 50px;
+    z-index: 2;
 }
